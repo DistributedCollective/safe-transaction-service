@@ -224,11 +224,12 @@ MASTER_COPIES: Dict[EthereumNetwork, List[Tuple[str, int, str]]] = {
         ("0x69f4D1788e39c87893C980c06EdF4b7f686e2938", 173751, "1.3.0"),
     ],
     EthereumNetwork.RSK: [
-        # ('0x3E5c63644E683549055b9Be8653de26E0B4CD36E', 0, '1.3.0+L2'),
+        ('0x3E5c63644E683549055b9Be8653de26E0B4CD36E', 3891238, '1.3.0+L2'),
+        ('0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552', 3891240, '1.3.0'),
     ],
     EthereumNetwork.RSK_TESTNET: [
         ("0x3E5c63644E683549055b9Be8653de26E0B4CD36E", 2362236, "1.3.0+L2"),
-        # ("0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552", 2362236, "1.3.0"),
+        ("0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552", 2362236, "1.3.0"),
     ],
 }
 
@@ -309,11 +310,10 @@ PROXY_FACTORIES: Dict[EthereumNetwork, List[Tuple[str, int]]] = {
         ("0xC22834581EbC8527d974F8a1c97E1bEA4EF910BC", 173709),  # v1.3.0
     ],
     EthereumNetwork.RSK: [
-        # ('0x4b1Af52EA200BAEbF79450DBC996573A7b75f65A', 3570865), # v1.2.0
-        # ('0xe8e29a03eb550a50a9fc199cb8ac6b9d22ec55c5', 2641646), # v1.1.0
+        ('0xa6b71e26c5e0845F74C812102cA7114B6A896aB2', 3891234), # v1.3.0
     ],
     EthereumNetwork.RSK_TESTNET: [
-        ('0xA6B71e26c5E0845f74c812102ca7114B6A896ab2', 2362232), # v1.3.0
+        ('0xa6b71e26c5e0845F74C812102cA7114B6A896aB2', 2362232), # v1.3.0
     ],
 }
 
