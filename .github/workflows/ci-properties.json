@@ -12,10 +12,8 @@
     "DJANGO_SETTINGS_MODULE": "config.settings.local",
     "C_FORCE_ROOT": "true",
     "DEBUG": "0",
-    "ETHEREUM_NODE_URL": "https://testnet.sovryn.app/rpc",
     "ETH_L2_NETWORK": "1",
     "ETH_INTERNAL_NO_FILTER": "1",
-    "DJANGO_ALLOWED_HOSTS": "safe-tx.test.sovryn.app",
     "DJANGO_SU_NAME": "sovryn",
     "DJANGO_SU_EMAIL": "sovryn@sovryn.app"
   }
