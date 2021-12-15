@@ -6,6 +6,7 @@
   "image_name": "sovryn/safe-transaction-service",
   "prod_branch": "rsk",
   "dev_branch": "develop",
+  "dockerfile_path": "./docker/web",
   "APP_ENV_VARS": {
     "PYTHONPATH": "/app/",
     "DJANGO_SETTINGS_MODULE": "config.settings.local",
