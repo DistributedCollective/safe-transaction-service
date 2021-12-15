@@ -1,0 +1,97 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app: safe-transaction-service
+  labels:
+    app: safe-transaction-service
+  name: safe-transaction-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: safe-transaction-service
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        app: safe-transaction-service
+      labels:
+        app: safe-transaction-service
+    spec:
+      containers:
+        - image: sovryn/safe-transaction-service
+          envFrom:
+          - secretRef:
+              name: safe-transaction-service
+          - secretRef:
+              name: safe-transaction-service-secret
+          name: web
+          resources: {}
+          volumeMounts:
+            - mountPath: /nginx
+              name: nginx-shared
+          command: ["/bin/sh","-c"]
+          args: ["docker/web/run_web.sh"]
+        - image: sovryn/safe-transaction-service
+          envFrom:
+          - secretRef:
+              name: safe-transaction-service
+          - secretRef:
+              name: safe-transaction-service-secret
+          name: worker
+          command: ["/bin/sh","-c"]
+          args: ["docker/web/celery/worker/run.sh"]
+          resources: {}
+        - image: sovryn/safe-transaction-service
+          envFrom:
+          - secretRef:
+              name: safe-transaction-service
+          - secretRef:
+              name: safe-transaction-service-secret
+          name: scheduler
+          resources: {}
+          command: ["/bin/sh","-c"]
+          args: ["docker/web/celery/scheduler/run.sh"]
+        - image: nginx:1.20-alpine
+          name: nginx
+          envFrom:
+          - secretRef:
+              name: safe-transaction-service
+          - secretRef:
+              name: safe-transaction-service-secret
+          ports:
+            - containerPort: 8000
+          resources: {}
+          volumeMounts:
+            - name: nginxconf
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+            - mountPath: /nginx
+              name: nginx-shared
+      restartPolicy: Always
+      volumes:
+        - name: nginx-shared
+          emptyDir: {}
+        - name: nginxconf
+          secret:
+            secretName: safe-transaction-service-nginx
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: safe-transaction-service
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-2:500674654096:certificate/4d342e91-c855-47ea-9c40-dea361b19d4f
+spec:
+  selector:
+    app: safe-transaction-service
+  ports:
+    - port: 443
+      targetPort: 8000
+  type: LoadBalancer
+---
