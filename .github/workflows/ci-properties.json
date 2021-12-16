@@ -5,11 +5,10 @@
   "registry": "docker.io",
   "image_name": "sovryn/safe-transaction-service",
   "prod_branch": "rsk",
-  "dev_branch": "develop",
+  "dev_branch": "rsk-dev",
   "dockerfile_path": "./docker/web",
   "APP_ENV_VARS": {
     "PYTHONPATH": "/app/",
-    "DJANGO_SETTINGS_MODULE": "config.settings.local",
     "C_FORCE_ROOT": "true",
     "DEBUG": "0",
     "ETH_L2_NETWORK": "1",

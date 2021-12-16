@@ -2,7 +2,7 @@ name: CI Template
 
 on:
   push:
-    branches: [ rsk, develop ]
+    branches: [ rsk, rsk-dev ]
   workflow_dispatch:
 
 jobs:
