@@ -25,5 +25,5 @@ repos:
       - id: end-of-file-fixer
         types: [python]
       - id: check-yaml
-        args: ['–allow-multiple-documents']
+        args: ['-allow-multiple-documents']
       - id: check-added-large-files
