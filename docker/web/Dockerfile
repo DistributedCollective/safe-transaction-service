@@ -1,5 +1,5 @@
 FROM python:3.9-slim
-
+LABEL com.datadoghq.ad.check.id="default"
 ARG APP_HOME=/app
 WORKDIR ${APP_HOME}
 ENV PYTHONUNBUFFERED 1
