@@ -2,12 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app: safe-transaction-service
+    deployment.kubernetes.io/revision: '1'
   labels:
     app: safe-transaction-service
   name: safe-transaction-service
 spec:
+  progressDeadlineSeconds: 600
   replicas: 1
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: safe-transaction-service
@@ -15,8 +17,6 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      annotations:
-        app: safe-transaction-service
       labels:
         app: safe-transaction-service
     spec:
