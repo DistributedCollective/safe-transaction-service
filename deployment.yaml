@@ -22,6 +22,7 @@ spec:
     spec:
       containers:
         - image: sovryn/safe-transaction-service
+          imagePullPolicy: Always
           envFrom:
           - secretRef:
               name: safe-transaction-service
@@ -35,6 +36,7 @@ spec:
           command: ["/bin/sh","-c"]
           args: ["docker/web/run_web.sh"]
         - image: sovryn/safe-transaction-service
+          imagePullPolicy: Always
           envFrom:
           - secretRef:
               name: safe-transaction-service
@@ -45,6 +47,7 @@ spec:
           args: ["docker/web/celery/worker/run.sh"]
           resources: {}
         - image: sovryn/safe-transaction-service
+          imagePullPolicy: Always
           envFrom:
           - secretRef:
               name: safe-transaction-service
@@ -55,6 +58,7 @@ spec:
           command: ["/bin/sh","-c"]
           args: ["docker/web/celery/scheduler/run.sh"]
         - image: nginx:1.20-alpine
+          imagePullPolicy: Always
           name: nginx
           envFrom:
           - secretRef:

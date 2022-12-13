@@ -16,5 +16,11 @@
     "ETH_INTERNAL_NO_FILTER": "1",
     "DJANGO_SU_NAME": "sovryn",
     "DJANGO_SU_EMAIL": "sovryn@sovryn.app"
+  },
+  "DEV_ENV_VARS": {
+    "NODE_ENV": "test"
+  },
+  "PROD_ENV_VARS": {
+    "NODE_ENV": "production"
   }
 }
